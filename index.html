@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <title>Optimo Lay 1</title>
+</head>
+<body>
+
+<div class="content">
+
+
+    <nav>
+        <div class="white-overlay"><img src="assets/images/logo_black.png"></div>
+
+        <div class="menu">
+
+            <ul class="links" id="nav-links">
+                <li><a href="#" class="active">Strona Główna</a></li>
+                <li><a href="#">Regulamin</a></li>
+                <li><a href="#">Informacje</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+
+            <ul class="icons">
+                <li><a href="#"><img src="assets/images/phone.svg"></a></li>
+                <li><a href="#"><img src="assets/images/envelope.svg"></a></li>
+                <li><a href="#" id="nav-trigger">
+                    <div class="hamburger"></div>
+                    <div class="hamburger"></div>
+                    <div class="hamburger"></div>
+                </a></li>
+            </ul>
+
+        </div>
+
+    </nav>
+
+    <header>
+        <div class="container">
+            <h1>Curabitur dictum, elit vitae <strong>lvbet</strong></h1>
+            <h2>zarejestruj się i <strong>wygraj 500zł.</strong></h2>
+            <div class="buttons">
+                <button class="yellow">ZAREJESTRUJ SIĘ</button>
+                <button class="yellow-outline">REGULAMIN</button>
+            </div>
+        </div>
+    </header>
+
+
+    <section>
+        <div class="square">
+            <div class="arrow"></div>
+        </div>
+        <div class="container">
+
+
+            <div class="info">
+                <h1>Rejestracja</h1>
+                <h2>100% darmowa</h2>
+                <p>Etiam elementum elit nec consectetur congue. Nam congue, felis eu semper luctus, lectus nibh blandit
+                    ligula, nec sagittis turpis</p>
+
+                <div class="arrow-box">
+                    <div class="arrow-square">
+                        <div class="diagonal">
+                            <div class="cut-left"></div>
+                            <div class="cut-right"></div>
+                        </div>
+                    </div>
+                    <div class="arrows">
+                        <div class="up">
+                            <div class="arrow-head"></div>
+                            <div class="arrow-stem"></div>
+                        </div>
+                        <div class="down">
+                            <div class="arrow-head"></div>
+                            <div class="arrow-stem"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="form">
+                <form>
+                    <input type="text" placeholder="Imię" name="firstname" minlength="3" required
+                           title="3 characters minimum" required>
+                    <input type="text" placeholder="Nazwisko" name="lastname" minlength="3" required
+                           title="3 characters minimum" required>
+                    <input type="email" placeholder="Email" name="email" id="email" required>
+                    <input type="email" placeholder="Powtórz adres email" name="email confirm"
+                           title="Please enter the same Email as above" required oninput="check(this)">
+                    <button type="submit">WYŚLIJ</button>
+                </form>
+            </div>
+
+
+        </div>
+
+
+    </section>
+    <div class="push"></div>
+</div>
+
+<footer>
+    <strong>nazwastrony.pl</strong> | wszystkie prawa zastrzeżone
+</footer>
+
+
+<script>
+    var menuState = false;
+    document.getElementById('nav-trigger').addEventListener('click', function () {
+        document.getElementById('nav-links').classList.add('links-animate')
+        menuState = true;
+    }, true);
+    document.querySelector('body').addEventListener('click', function () {
+        if (menuState === true) {
+            document.getElementById('nav-links').classList.remove('links-animate')
+            menuState = false;
+        }
+    }, true);
+
+    function check(input) {
+        if (input.value !== document.getElementById('email').value) {
+            input.setCustomValidity('Email Must be Matching.');
+        } else {
+            input.setCustomValidity('');
+        }
+    }
+</script>
+</body>
+</html>

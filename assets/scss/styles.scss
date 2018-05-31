@@ -1,0 +1,560 @@
+@import "compass";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+
+$c-yellow: #f6b725;
+$overlay-color: #230057;
+$footer-height: 50px;
+$nav-height: 70px;
+
+$screen-lg: 992px;
+$screen-md: 768px;
+$screen-sm: 576px;
+$screen-xs: 576px;
+
+$box-width: 75px;
+$box-height: 75px;
+$diagonal-height: 5px;
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, p, span, button, a, input, input::placeholder {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+.content {
+  min-height: 100%;
+  margin-bottom: -$footer-height;
+}
+
+nav {
+  width: 100%;
+  background-color: $c-yellow;
+  height: $nav-height;
+
+  .white-overlay {
+    @include float(left);
+    @include display-flex;
+    @include justify-content(flex-end);
+    @include align-items(center);
+    background-color: white;
+    width: 35%;
+    height: 100%;
+    img {
+      margin-right: 10px;
+    }
+  }
+  .menu {
+    height: 100%;
+    @include display-flex;
+    @include justify-content(space-between);
+    @media (max-width: $screen-lg) {
+      @include justify-content(flex-end);
+    }
+    @include align-items(center);
+
+    @keyframes menu-anim {
+      0% {
+        transform: translateX(300px);
+      }
+      100% {
+        transform: translateX(0px);
+      }
+    }
+
+    .links-animate {
+      animation: menu-anim 0.5s;
+      animation-fill-mode: forwards;
+    }
+
+    .links {
+      list-style-type: none;
+      @media (max-width: $screen-lg) {
+        position: absolute;
+        top: $nav-height;
+        right: 0;
+        background-color: $c-yellow;
+        margin-top: 0;
+        @include transform(translateX(-2000%));
+        z-index: 5;
+      }
+      li {
+        margin: 5px;
+        @media (min-width: $screen-lg) {
+          display: inline;
+        }
+        @media (max-width: $screen-lg) {
+          margin: 15px;
+        }
+
+        a {
+          color: black;
+          text-decoration: none;
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+        .active {
+          border-bottom: 2px solid black;
+        }
+        .active:hover {
+          color: black !important;
+        }
+        a:hover {
+          color: #fff;
+        }
+      }
+    }
+
+    .icons {
+      list-style-type: none;
+      li {
+        cursor: pointer;
+        @include float(left);
+        background-color: white;
+        width: 30px;
+        height: 30px;
+        margin: 5px;
+        text-align: center;
+        img {
+          width: 15px;
+          height: auto;
+          margin-top: 7.5px;
+        }
+
+        .hamburger {
+          width: 22px;
+          height: 5px;
+          background-color: black;
+          @include border-radius(3px);
+          margin-top: 4px;
+          margin-left: 4px;
+        }
+      }
+      li:nth-child(2) {
+        margin-right: 15px;
+        @media (max-width: $screen-lg) {
+          margin-right: 5px;
+        }
+      }
+      li:nth-child(3) {
+        display: none;
+        @media (max-width: $screen-lg) {
+          display: initial;
+        }
+      }
+    }
+  }
+}
+
+header {
+  //2000 x 646
+  @include background-image(linear-gradient(rgba($overlay-color, 0.5), rgba($overlay-color, 0.5)), url(./../images/top.jpg));
+  @include background-size(cover);
+  background-position: center;
+  width: 100%;
+  @media (max-width: $screen-xs) {
+    height: 200px;
+  }
+  @media (min-width: $screen-sm) {
+    height: 300px;
+  }
+  @media (min-width: $screen-md) {
+    height: 454px;
+  }
+  @media (min-width: $screen-lg) {
+    height: 646px;
+  }
+
+  .container {
+    height: 100%;
+    @include display-flex;
+    @include justify-content(center);
+    @include align-items(center);
+    @include flex-direction(column);
+    color: #fff;
+    h1 {
+      text-align: center;
+      font-weight: 300;
+      font-size: 3em;
+      margin: 0;
+      @media (max-width: $screen-md) {
+        font-size: 2em;
+      }
+      @media (max-width: $screen-xs) {
+        font-size: 1.5em;
+      }
+    }
+
+    h2 {
+      font-weight: normal;
+      font-size: 2.5em;
+      margin: 0;
+      color: $c-yellow;
+      @media (max-width: $screen-md) {
+        font-size: 1.5em;
+      }
+      @media (max-width: $screen-xs) {
+        font-size: 1em;
+      }
+    }
+    .buttons {
+      @include display-flex;
+      @include justify-content(space-between);
+      margin-top: 1em;
+      width: 90%;
+      @media (min-width: $screen-md) {
+        margin-top: 2em;
+      }
+      @media (max-width: $screen-md) {
+        width: 80%;
+      }
+      @media (max-width: $screen-xs) {
+        width: 100%;
+      }
+
+      @media (min-width: $screen-lg) {
+        width: 35%;
+      }
+
+      @media (min-width: 1350px) {
+        width: 25%;
+      }
+
+      button {
+        width: 100%;
+        margin: 15px;
+        @media (max-width: $screen-md) {
+          margin-top: 5px;
+        }
+      }
+
+      .yellow {
+        cursor: pointer;
+        font-weight: bold;
+        background-color: $c-yellow;
+        border: 0;
+        padding: 15px;
+        @media (max-width: $screen-xs) {
+          padding: 10px;
+        }
+        border-radius: 25px;
+        @include transition(background 0.5s, border-radius 0.5s);
+      }
+
+      .yellow:hover {
+        background-color: #fff;
+        border-radius: 0;
+      }
+      .yellow:focus {
+        outline: none;
+      }
+
+      .yellow-outline {
+        cursor: pointer;
+        padding-left: 15px;
+        padding-right: 15px;
+        color: $c-yellow;
+        font-weight: bold;
+        border: 3px solid $c-yellow;
+        border-radius: 25px;
+        background-color: transparent;
+        @include transition(all 0.5s);
+      }
+
+      .yellow-outline:hover {
+        background-color: $c-yellow;
+        border-radius: 0;
+        color: black;
+      }
+
+    }
+
+  }
+}
+
+$square-size: 70px;
+$arrow-size: 16px;
+
+$square-size-md: 50px;
+$arrow-size-md: 12px;
+
+$square-size-xs: 30px;
+$arrow-size-xs: 6px;
+
+section {
+  .square {
+    width: $square-size;
+    height: $square-size;
+    background-color: #fff;
+    @include transform(rotate(-45deg));
+    margin-top: -($square-size/2);
+    @media (max-width: $screen-md) {
+      width: $square-size-md;
+      height: $square-size-md;
+      margin-top: -($square-size-md/2);
+    }
+
+    @media (max-width: $screen-xs) {
+      width: $square-size-xs;
+      height: $square-size-xs;
+      margin-top: -($square-size-xs/2);
+    }
+
+    margin-left: auto;
+    margin-right: auto;
+
+    @include display-flex;
+    @include justify-content(center);
+    @include align-items(center);
+
+    .arrow {
+      width: $arrow-size;
+      height: $arrow-size;
+      margin-left: $arrow-size;
+      margin-bottom: $arrow-size;
+      border-bottom: 5px solid black;
+      border-left: 5px solid black;
+      @media (max-width: $screen-md) {
+        width: $arrow-size-md;
+        height: $arrow-size-md;
+        margin-left: $arrow-size-md;
+        margin-bottom: $arrow-size-md;
+      }
+      @media (max-width: $screen-xs) {
+        width: $arrow-size-xs;
+        height: $arrow-size-xs;
+        margin-left: $arrow-size-xs;
+        margin-bottom: $arrow-size-xs;
+        border-bottom: 3px solid black;
+        border-left: 3px solid black;
+      }
+    }
+
+  }
+  .container {
+    @media (min-width: $screen-lg) {
+      margin-top: 2em;
+      width: 1024px;
+    }
+
+    margin-left: auto;
+    margin-right: auto;
+    @include display-flex;
+    @include flex-direction(column);
+
+    @media (min-width: $screen-sm) {
+      @include flex-direction(row);
+    }
+
+    .info {
+      @include flex-basis(0);
+      @include flex-grow(1);
+      margin: 10px;
+      h1 {
+        @media (max-width: $screen-md) {
+          text-align: center;
+        }
+        font-weight: bold;
+        color: $c-yellow;
+        font-size: 2.4em;
+        margin: 0;
+      }
+      h2 {
+        font-weight: 300;
+        margin: 0;
+        @media (max-width: $screen-md) {
+          text-align: center;
+        }
+      }
+      p {
+        font-weight: 300;
+        font-size: small;
+        color: #888888;
+        @media (max-width: $screen-md) {
+          text-align: center;
+        }
+      }
+
+      @media (max-width: $screen-md) {
+        .arrow-box {
+          left: calc(50% - 37.5px);
+        }
+      }
+
+    }
+
+    .form {
+      @include flex-basis(0);
+      @include flex-grow(3);
+      align-self: center;
+      margin-left: 10px;
+      @media (min-width: $screen-lg) {
+        margin-left: 100px;
+      }
+
+      form {
+        input {
+          background-color: #1d1d33;
+          border: none;
+          padding: 7.5px;
+          color: white;
+          font-size: smaller;
+          margin: 5px;
+          width: calc(100% - 35px);
+          @media (min-width: $screen-md) {
+            width: 40%;
+          }
+          @media (min-width: $screen-lg) {
+            width: 45%;
+          }
+        }
+        input::placeholder {
+          color: #fff;
+          font-size: smaller;
+        }
+        button {
+          margin: 5px;
+          display: block;
+          background-color: $c-yellow;
+          border: none;
+          color: black;
+          padding: 10px;
+          width: 120px;
+          font-weight: bold;
+        }
+      }
+    }
+
+  }
+}
+
+.arrow-box {
+  width: $box-width;
+  height: $box-height;
+  position: relative;
+  .arrow-square {
+    width: $box-width;
+    height: $box-height;
+    @include display-flex(flex);
+    @include justify-content(center);
+    @include align-items(center);
+    .diagonal {
+      width: $box-width;
+      height: $diagonal-height;
+      background-color: $c-yellow;
+      @include transform(rotate(-45deg));
+      position: relative;
+      .cut-left {
+        width: $diagonal-height*3;
+        height: $diagonal-height*2;
+        margin-left: -($diagonal-height + ($diagonal-height/2));
+        @include transform(rotate(45deg));
+        background-color: #fff;
+      }
+      .cut-right {
+        width: $diagonal-height*3;
+        height: $diagonal-height*2;
+        margin-top: -($diagonal-height*3);
+        margin-right: -($diagonal-height*2);
+        background-color: #fff;
+        @include transform(rotate(45deg));
+        @include float(right);
+      }
+    }
+  }
+  .arrows {
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    width: $box-width;
+    height: $box-height;
+
+    .up {
+      width: 15px;
+      height: 15px;
+      position: relative;
+      left: -10px;
+      @include animation(MoveUpDownArrowUp 1s linear infinite);
+      .arrow-head {
+        width: 15px;
+        height: 15px;
+        border-top: 5px solid $c-yellow;
+        border-left: 5px solid $c-yellow;
+        @include transform(rotate(45deg));
+      }
+      .arrow-stem {
+        width: 5px;
+        height: 22px;
+        position: absolute;
+        top: 0;
+        left: 7.5px;
+        background-color: $c-yellow;
+        border-radius: 2px;
+      }
+
+    }
+    .down {
+      width: 15px;
+      height: 15px;
+      position: relative;
+      top: 7px;
+      left: 17.5px;
+      @include animation(MoveUpDownArrowDown 1s linear infinite);
+      .arrow-head {
+        width: 15px;
+        height: 15px;
+        border-bottom: 5px solid $c-yellow;
+        border-right: 5px solid $c-yellow;
+        @include transform(rotate(45deg));
+      }
+      .arrow-stem {
+        width: 5px;
+        height: 22px;
+        position: absolute;
+        top: 0;
+        left: 7.5px;
+        background-color: $c-yellow;
+        border-radius: 2px;
+      }
+    }
+
+  }
+
+}
+
+@keyframes MoveUpDownArrowUp {
+  0%, 100% {
+    @include transform(translateY(0px));
+  }
+  50% {
+    @include transform(translateY(-5px));
+  }
+}
+
+@keyframes MoveUpDownArrowDown {
+  0%, 100% {
+    @include transform(translateY(0px));
+  }
+  50% {
+    @include transform(translateY(5px));
+  }
+}
+
+.push {
+  height: $footer-height;
+}
+
+footer {
+  width: 100%;
+  height: $footer-height;
+  background-color: $c-yellow;
+  text-align: center;
+  line-height: $footer-height;
+  vertical-align: middle;
+  font-size: small;
+}
