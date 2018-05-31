@@ -412,10 +412,10 @@ section {
           @media (min-width: $screen-lg) {
             width: 45%;
           }
-        }
-        input::placeholder {
-          color: #fff;
-          font-size: smaller;
+          @include input-placeholder {
+            color: #fff;
+            font-size: smaller;
+          }
         }
         button {
           margin: 5px;
